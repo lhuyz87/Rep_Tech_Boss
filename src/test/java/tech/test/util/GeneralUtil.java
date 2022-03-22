@@ -20,6 +20,7 @@ import java.util.Map.Entry;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import org.apache.poi.util.SystemOutLogger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -51,6 +52,21 @@ public class GeneralUtil {
         throw new CloneNotSupportedException();
     }
     // singleton
+    
+   public static String[] matriz =  {"01111", "01101", "00011", "11110"};
+   
+    
+    public static void main (String[] args) {  
+        // keep this function call here     
+        //Scanner s = new Scanner(System.in);
+        //System.out.print(BitmapHoles(s.nextLine())); 
+//        getHol(matriz);
+//        String[] aux = invertirMatriz(matriz);
+//        getHol(aux);
+    	
+    	String a =StringPeriods("abcababcababcab");
+       System.out.println(" " + a);
+      }
 
     public String fechaAgregarTiempo(String fecha, String formato, int cale, int cant) {
         try {
@@ -284,11 +300,92 @@ public class GeneralUtil {
         }
     }
     
-    
-		
-	}
+    public static int getHol(String[] matriz){
+        int contadorHole=0;
+        for(int i=0; i<matriz.length; i++){
+          for(int j=0; j<matriz[i].length();j++){
+              if(j<(matriz[i].length()-1) && matriz[i].charAt(j)=='0'){
+                  if(matriz[i].charAt(j)==matriz[i].charAt(j+1))
+                    contadorHole++;
+              }   
+          }
 
+        }
+
+          System.out.println(" :" + contadorHole);
+
+        return contadorHole;
+
+      }
     
+    public static String[] invertirMatriz(String[] matrizOriginal){
+    	
+        String[] invertida = new String[matrizOriginal[0].length()];
+        invertida[0]="";
+        String aux="";
+        int contAux=0;
+        
+        for(int i=0;i<invertida.length;i++) {
+        	for(int j=0;j<matrizOriginal.length;j++) {
+        		aux = aux + matrizOriginal[j].charAt(i); 
+        	}
+        	
+        	invertida[i]=aux;
+        	aux="";
+        }
+        return invertida;
+    }
     
+    public static String StringPeriods(String str) {
+        if(str.length()==1) {
+        	
+        	System.out.println("entra a -1");
+            return "-1";
+        	
+        	}
+          
+        String cortado="";
+        String result="";
+        int actual=0;
+        String[] str2 = str.split("");
+        String cadenaMaxima="";
+
+      while(actual<str.length()/2){
+
+         boolean valido=true;
+         System.out.println(" str2[actual] " + str2[actual]);
+         cortado+= str2[actual];
+         System.out.println(" cortado " + cortado);
+         for(int i=actual; i<str.length(); i+=cortado.length()){
+        	 
+        	 System.out.println(cortado + " Vs "  + str.substring(i,cortado.length()) );
+           if(cortado.compareTo(str.substring(i,cortado.length()))!=0){
+        	   System.out.println("entra a false");
+             valido=false;
+             break;
+           }
+         }
+         
+         if(valido==true && cortado.length()>result.length()){
+        	 System.out.println("entra a true");
+           result=cortado;
+         }
+         actual++;
+
+         if(result.length()>=1){
+        	 System.out.println("entra if");
+        	 cadenaMaxima=result; 
+           return result;
+         }else{
+        	 System.out.println("entra else");
+        	 cadenaMaxima="-1";
+           return "-1";
+         }
 
 
+      }
+	   
+      return cadenaMaxima;
+      }
+    
+}

@@ -10,7 +10,7 @@ import com.ibm.icu.impl.InvalidFormatException;
 
 
 
-@CucumberOptions(features = { "src/test/resources/features/" }, tags = { "@Regresion" }, glue = { "tech.test.definition" })
+@CucumberOptions(features = { "src/test/resources/features/" }, tags = { "@DetalleProductoSoluciones" }, glue = { "tech.test.definition" })
 
 
 
