@@ -9,9 +9,9 @@ Feature: Productos y Soluciones TechBoss
     Examples: 
       | producto | soluciones          |
       | Seif     | Minuta Virtual      |
-      | Seif     | Tickets de Servicio |
-      | Seif     | Comunicaciones      |
-      | Seif     | Escoltas            |
+ #     | Seif     | Tickets de Servicio |
+ #     | Seif     | Comunicaciones      |
+ #     | Seif     | Escoltas            |
 
   @CamposAtencionAlcliente @Regresion
   Scenario Outline: 2-Validar los campos obligarios en el formulario de atención al cliente
