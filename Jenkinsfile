@@ -1,5 +1,5 @@
 import java.text.SimpleDateFormat
-import groovy.json.JsonSlurper;
+import groovy.json.JsonSlurper
 
 def defDateFormat = new SimpleDateFormat("yyyyMMddHHmm")
 def defDate = new Date()
@@ -56,7 +56,20 @@ pipeline {
       }
     }
 
-
+    stage('Extract_Result') {
+      steps {
+        script {
+          try {
+            bat("echo ${defTimestamp}")
+            File fl = new File('${WORKSPACE}/target/cucumber/counter.json')
+            echo 'Se extrae reporte'
+          } catch (ex) {
+            echo 'Archivo no existe'
+            error('Failed')
+          }
+        }
+      }
+    }
 
   }
 
