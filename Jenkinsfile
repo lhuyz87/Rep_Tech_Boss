@@ -14,7 +14,7 @@ def test() {
 }
 
 def getConfig() {
-  new JsonSlurper().parseText(readFile("${WORKSPACE}/target/cucumber/counter.json")))
+  new JsonSlurper().parseText(readFile("${WORKSPACE}/target/cucumber/counter.json"))
 }
 
 pipeline {
