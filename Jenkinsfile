@@ -9,6 +9,7 @@ def defTimestamp = defDateFormat.format(defDate).toString()
 
 def test() {
   def config = getConfig()
+  echo 'Variable...'
   echo "${config}"
   echo "${config.class}"
 }
