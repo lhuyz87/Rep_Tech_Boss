@@ -7,6 +7,16 @@ def defTimestamp = defDateFormat.format(defDate).toString()
 
 //def jsonSlurper = new JsonSlurper()
 
+def test() {
+  def config = getConfig()
+  echo "${config}"
+  echo "${config.class}"
+}
+
+def getConfig() {
+  new JsonSlurper().parseText(readFile("./config.json")))
+}
+
 pipeline {
   agent any
   // agent {label 'Slave_1'}
