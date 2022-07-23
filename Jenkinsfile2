@@ -1,13 +1,8 @@
 import java.text.SimpleDateFormat
-import groovy.json.JsonSlurper;
 
 def defDateFormat = new SimpleDateFormat("yyyyMMddHHmm")
 def defDate = new Date()
 def defTimestamp = defDateFormat.format(defDate).toString()
-
-def jsonSlurper = new JsonSlurper()
-
-
 
 pipeline {
      agent any
@@ -55,23 +50,6 @@ pipeline {
 
                     catch (ex) {
                         echo 'Reporte realizado con Fallos'
-                        error ('Failed')
-                    }
-                }
-            }
-        }
-        
-                stage ('Extract_Result') {
-        	steps {
-        		script {
-                     try {
-                        bat ("echo ${defTimestamp}")
-                        File fl = new File('${WORKSPACE}/target/cucumber/counter.json')
- 	                   echo 'Se extrae reporte'
-                    }
-
-                    catch (ex) {
-                        echo 'Archivo no existe'
                         error ('Failed')
                     }
                 }
