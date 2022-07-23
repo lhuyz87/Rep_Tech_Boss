@@ -1,11 +1,11 @@
 import java.text.SimpleDateFormat
-import groovy.json.JsonSlurper
+//import groovy.json.JsonSlurper
 
 def defDateFormat = new SimpleDateFormat("yyyyMMddHHmm")
 def defDate = new Date()
 def defTimestamp = defDateFormat.format(defDate).toString()
 
-def jsonSlurper = new JsonSlurper()
+//def jsonSlurper = new JsonSlurper()
 
 pipeline {
   agent any
