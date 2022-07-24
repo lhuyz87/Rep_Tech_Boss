@@ -1,5 +1,6 @@
 import java.text.SimpleDateFormat
 import groovy.json.JsonSlurper
+import java.io.File 
 
 def defDateFormat = new SimpleDateFormat("yyyyMMddHHmm")
 def defDate = new Date()
