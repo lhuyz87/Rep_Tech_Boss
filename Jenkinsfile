@@ -84,7 +84,7 @@ pipeline {
             File fl = new File("${WORKSPACE}/target/cucumber/counter.json")
             println("${WORKSPACE}/target/cucumber/counter.json")
             def jsonSlurper = new JsonSlurper()
-            def obj = jsonSlurper.parseText(fl)
+            def obj = jsonSlurper.parseText(fl.text)
             println("Archivo: ${obj}")
             
             
