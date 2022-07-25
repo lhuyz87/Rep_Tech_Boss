@@ -88,13 +88,8 @@ pipeline {
             println("Archivo: ${obj}")
             
             
-            def restResponse = '[{"uid":10512213, "name":"Bob"},{"uid":7208201, "name":"John"},{"uid":10570, "name":"Jim"},{"uid":1799657, "name":"Sally"}]'
-            def list = new JsonSlurper().parseText( restResponse )
-             println("Archivo: ${list}")
-            
-            
-            //def pretty = JsonOutput.prettyPrint(obj)
-            //println("Archivo: ${pretty}")
+          	def json_str = JsonOutput.toJson(obj)
+			println("Archivo: ${json_str}")
 
             echo 'Se extrae reporte'
           } catch (Exception e) {
