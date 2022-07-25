@@ -1,6 +1,7 @@
 import java.text.SimpleDateFormat
 import groovy.json.JsonSlurper
 import java.io.File 
+import groovy.json.JsonOutput
 
 def defDateFormat = new SimpleDateFormat("yyyyMMddHHmm")
 def defDate = new Date()
@@ -85,6 +86,8 @@ pipeline {
             def jsonSlurper = new JsonSlurper()
             def obj = jsonSlurper.parseText(fl.text)
             println("Archivo: ${obj}")
+            def pretty = JsonOutput.prettyPrint(obj)
+             println("Archivo: ${pretty}")
             //println fl.text
             echo 'Se extrae reporte'
           } catch (Exception e) {
