@@ -15,8 +15,14 @@ def test() {
   echo "${config.class}"
 }
 
+//def getConfig() {
+//  new JsonSlurper().parseText(readFile("${WORKSPACE}/target/cucumber/counter.json"))
+//}
+
 def getConfig() {
-  new JsonSlurper().parseText(readFile("${WORKSPACE}/target/cucumber/counter.json"))
+   def pjson = new groovy.json.JsonSlurper().parse(new File("${WORKSPACE}/target/cucumber/counter.json"))
+   assert pjson instanceof Map
+   pjson
 }
 
 pipeline {
