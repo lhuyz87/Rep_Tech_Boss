@@ -90,11 +90,26 @@ pipeline {
             
           	def json_str = JsonOutput.toJson(obj)
 			println("Archivo: ${json_str}")
+			//json_str.each { println it }
+            echo 'Se extrae reporte'
+
+			def ids = []
+			json_str.each { item ->
+   			item.elements.each { elements ->
+   			item.elements.steps.result.each{ result
+      		if (result.status == 'passed') {
+        	ids << item.id
+      			}
+   		 	 }
+   		  }
+		}
+		
+		println ids
+
 			//def valor = json_str.line.elements[0].line
 			//println("Valor: ${valor}")
 			//println(json_str['status'])
-			json_str.each { println it }
-            echo 'Se extrae reporte'
+
           } catch (Exception e) {
          	 println("Exception: ${e}")
             echo 'Archivo no existe'
