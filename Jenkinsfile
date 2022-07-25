@@ -84,10 +84,10 @@ pipeline {
             File fl = new File("${WORKSPACE}/target/cucumber/counter.json")
             println("${WORKSPACE}/target/cucumber/counter.json")
             def jsonSlurper = new JsonSlurper()
-            def obj = jsonSlurper.parseText(fl.text)
+            def obj = jsonSlurper.parseText(fl)
             println("Archivo: ${obj}")
-            def pretty = JsonOutput.prettyPrint(obj)
-             println("Archivo: ${pretty}")
+            //def pretty = JsonOutput.prettyPrint(obj)
+            //println("Archivo: ${pretty}")
             //println fl.text
             echo 'Se extrae reporte'
           } catch (Exception e) {
