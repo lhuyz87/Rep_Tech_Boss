@@ -92,7 +92,8 @@ pipeline {
 			println("Archivo: ${json_str}")
 			//def valor = json_str.line.elements[0].line
 			//println("Valor: ${valor}")
-			println(json_str['status'])
+			//println(json_str['status'])
+			json_str.each { println it }
             echo 'Se extrae reporte'
           } catch (Exception e) {
          	 println("Exception: ${e}")
