@@ -90,7 +90,7 @@ pipeline {
             
           	def json_str = JsonOutput.toJson(obj)
 			println("Archivo: ${json_str}")
-			def valor json_str.line.elements[0].line
+			def valor = json_str.line.elements[0].line
 			println("Valor: ${valor}")
             echo 'Se extrae reporte'
           } catch (Exception e) {
