@@ -74,8 +74,9 @@ pipeline {
           try {
             bat("echo ${defTimestamp}")
             File fl = new File('${WORKSPACE}/target/cucumber/counter.json')
-            def obj = jsonSlurper.parse(fl)
-            println(obj)
+            //def obj = jsonSlurper.parse(fl)
+            //println(obj)
+            println fl.text
             echo 'Se extrae reporte'
           } catch (ex) {
             echo 'Archivo no existe'
