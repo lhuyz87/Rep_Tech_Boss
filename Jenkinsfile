@@ -92,9 +92,108 @@ pipeline {
 			println("Archivo: ${json_str}")
 			//json_str.each { println it }
             echo 'Se extrae reporte'
+            
+            
+            
+            
+            def json = '''[
+   {
+      "line":1,
+      "elements":[
+         {
+            "line":39,
+            "name":"3-Validar que el sistema permita poder realizar busquedas no existentes",
+            "description":"",
+            "id":"productos-y-soluciones-techboss;3-validar-que-el-sistema-permita-poder-realizar-busquedas-no-existentes;;2",
+            "type":"scenario",
+            "keyword":"Scenario Outline",
+            "steps":[
+               {
+                  "result":{
+                     "duration":8132717300,
+                     "status":"passed"
+                  },
+                  "line":32,
+                  "name":"que accedo a la p\u00e1gina principal de Tech Boss",
+                  "match":{
+                     "location":"ProductosDefinition.que_accedo_a_la_p\u00e1gina_principal_de_Tech_Boss()"
+                  },
+                  "keyword":"Given "
+               },
+               {
+                  "result":{
+                     "duration":2235827700,
+                     "status":"passed"
+                  },
+                  "line":33,
+                  "name":"selecciono opcion buscar",
+                  "match":{
+                     "location":"ProductosDefinition.selecciono_opcion_buscar()"
+                  },
+                  "keyword":"And "
+               },
+               {
+                  "result":{
+                     "duration":5651431300,
+                     "status":"passed"
+                  },
+                  "line":34,
+                  "name":"ingreso el valor a buscar \"asasasasas\"",
+                  "match":{
+                     "arguments":[
+                        {
+                           "val":"asasasasas",
+                           "offset":27
+                        }
+                     ],
+                     "location":"ProductosDefinition.ingreso_el_valor_a_buscar(String)"
+                  },
+                  "keyword":"And "
+               },
+               {
+                  "result":{
+                     "duration":214366900,
+                     "status":"passed"
+                  },
+                  "line":35,
+                  "name":"valido que se muestre mensaje de informativo \"No Results Found\"",
+                  "match":{
+                     "arguments":[
+                        {
+                           "val":"No Results Found",
+                           "offset":46
+                        }
+                     ],
+                     "location":"ProductosDefinition.valido_que_se_muestre_mensaje_de_informativo(String)"
+                  },
+                  "keyword":"Then "
+               }
+            ],
+            "tags":[
+               {
+                  "name":"@BusquedaInexistente"
+               },
+               {
+                  "name":"@Regresion"
+               }
+            ]
+         }
+      ],
+      "name":"Productos y Soluciones TechBoss",
+      "description":"",
+      "id":"productos-y-soluciones-techboss",
+      "keyword":"Feature",
+      "uri":"src/test/resources/features/1-ProductoSolucionesTechBoss.feature",
+      "tags":[
+         
+      ]
+   }
+]'''
+            
+	def parsedJson = new groovy.json.JsonSlurper().parseText(json)
 
 			def ids = []
-			obj.each { item ->
+			parsedJson.each { item ->
    			item.elements.each { element ->
    			element.steps.result.each{ result
       		if (result.status == 'passed') {
