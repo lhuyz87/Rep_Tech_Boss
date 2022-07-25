@@ -195,9 +195,11 @@ pipeline {
 			def ids = []
 			parsedJson.each { item ->
    			item.elements.each { element ->
-   			element.steps.result.each{ result
+   			element.steps.each{ step ->
+   			step.result.each{ result ->
       		if (result.status == 'passed') {
         	ids << item.id
+      			}
       			}
    		 	 }
    		  }
