@@ -6,7 +6,7 @@ def defDateFormat = new SimpleDateFormat("yyyyMMddHHmm")
 def defDate = new Date()
 def defTimestamp = defDateFormat.format(defDate).toString()
 
-def jsonSlurper = new JsonSlurper()
+//def jsonSlurper = new JsonSlurper()
 
 def test() {
   def config = getConfig()
@@ -78,7 +78,8 @@ pipeline {
             //println(obj)
             //println fl.text
             echo 'Se extrae reporte'
-          } catch (ex) {
+          } catch (Exception e) {
+         	 println("Exception: ${e}")
             echo 'Archivo no existe'
             error('Failed')
           }
