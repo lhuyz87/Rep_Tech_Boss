@@ -138,7 +138,7 @@ pipeline {
                      "status":"passed"
                   },
                   "line":34,
-                  "name":"ingreso el valor a buscar \"asasasasas\"",
+                  "name":"ingreso el valor a buscar "asasasasas"",
                   "match":{
                      "arguments":[
                         {
@@ -156,7 +156,7 @@ pipeline {
                      "status":"passed"
                   },
                   "line":35,
-                  "name":"valido que se muestre mensaje de informativo \"No Results Found\"",
+                  "name":"valido que se muestre mensaje de informativo "No Results Found"",
                   "match":{
                      "arguments":[
                         {
