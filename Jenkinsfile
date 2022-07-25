@@ -96,7 +96,7 @@ pipeline {
 			def ids = []
 			json_str.each { item ->
    			item.elements.each { elements ->
-   			item.elements.steps.result.each{ result
+   			elements.steps.result.each{ result
       		if (result.status == 'passed') {
         	ids << item.id
       			}
