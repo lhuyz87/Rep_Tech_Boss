@@ -94,9 +94,9 @@ pipeline {
             echo 'Se extrae reporte'
 
 			def ids = []
-			json_str.each { item ->
-   			item.elements.each { elements ->
-   			elements.steps.result.each{ result
+			obj.each { item ->
+   			item.elements.each { element ->
+   			element.steps.result.each{ result
       		if (result.status == 'passed') {
         	ids << item.id
       			}
