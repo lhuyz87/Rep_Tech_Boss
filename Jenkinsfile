@@ -78,7 +78,7 @@ pipeline {
             println("${WORKSPACE}/target/cucumber/counter.json")
             def jsonSlurper = new JsonSlurper()
             def obj = jsonSlurper.parseText(fl.text)
-            //def obj = jsonSlurper.parseText(fl.text)
+            println("Archivo: ${obj}")
             //println fl.text
             echo 'Se extrae reporte'
           } catch (Exception e) {
