@@ -85,40 +85,34 @@ pipeline {
             println("${WORKSPACE}/target/cucumber/counter.json")
             def jsonSlurper = new JsonSlurper()
             def obj = jsonSlurper.parseText(fl.text)
-            println("Archivo: ${obj}")
-            
-            
+ //         println("Archivo: ${obj}")
           	def json_str = JsonOutput.toJson(obj)
 			println("Archivo: ${json_str}")
 			//json_str.each { println it }
             echo 'Se extrae reporte'
-            
-        
-            
-           
-def parsedJson = new groovy.json.JsonSlurper().parseText(json_str)
-   def noPassed = 0
-   def ids = []
-   parsedJson.each { item ->
-      item.elements.each { element ->
-        element.steps.each { step ->
-        if (step.result.status!= "passed") {
-         noPassed = noPassed+1
-         }
-        }
-       }
-  }
-echo 'Total'
-println noPassed 
-		
-	
+         
+			def parsedJson = new groovy.json.JsonSlurper().parseText(json_str)
+			   def noPassed = 0
+			   def ids = []
+			   parsedJson.each { item ->
+			      item.elements.each { element ->
+			        element.steps.each { step ->
+			        if (step.result.status!= "passed") {
+			         noPassed = noPassed+1
+			         }
+			        }
+			       }
+			  }
+			echo 'Total'
+			println noPassed 
+			
+			if(noPassed>0){
+			error('Failed')
+			}
 
-			//def valor = json_str.line.elements[0].line
-			//println("Valor: ${valor}")
-			//println(json_str['status'])
 
           } catch (Exception e) {
-         	 println("Exception: ${e}")
+         	println("Exception: ${e}")
             echo 'Archivo no existe'
             error('Failed')
           }
