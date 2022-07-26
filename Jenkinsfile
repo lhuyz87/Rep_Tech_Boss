@@ -190,7 +190,7 @@ pipeline {
    }
 ]'''
             
-def parsedJson = new groovy.json.JsonSlurper().parseText(json)
+def parsedJson = new groovy.json.JsonSlurper().parseText(json_str)
    def noPassed = 0
    def ids = []
    parsedJson.each { item ->
