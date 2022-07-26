@@ -190,22 +190,22 @@ pipeline {
    }
 ]'''
             
-	def parsedJson = new groovy.json.JsonSlurper().parseText(json)
-
-			def ids = []
-			parsedJson.each { item ->
-   			item.elements.each { element ->
-   			element.steps.each{ step ->
-   			step.result.each{ result ->
-      		if (result.status == 'passed') {
-        	ids << item.id
-      			}
-      			}
-   		 	 }
-   		  }
-		}
+def parsedJson = new groovy.json.JsonSlurper().parseText(json)
+   def noPassed = 0
+   def ids = []
+   parsedJson.each { item ->
+      item.elements.each { element ->
+        element.steps.each { step ->
+        if (step.result.status!= "passed") {
+         noPassed = noPassed+1
+         }
+        }
+       }
+  }
+echo 'Total'
+println noPassed 
 		
-		println ids
+	
 
 			//def valor = json_str.line.elements[0].line
 			//println("Valor: ${valor}")
