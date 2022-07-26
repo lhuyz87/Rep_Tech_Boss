@@ -99,7 +99,7 @@ pipeline {
 def parsedJson = new groovy.json.JsonSlurper().parseText(json_str)
    def noPassed = 0
    def ids = []
-   json_str.each { item ->
+   parsedJson.each { item ->
       item.elements.each { element ->
         element.steps.each { step ->
         if (step.result.status!= "passed") {
